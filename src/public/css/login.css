@@ -1,0 +1,63 @@
+.login-form__content {
+    width: 680px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: white;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.login-form__title {
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+.form__group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form__label-item {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form__group--text {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    background-color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.form__group--text input {
+    border: none;
+    outline: none;
+}
+
+.error-text {
+    color: red;
+    margin-bottom: 8px;
+}
+
+.form__button-submit {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff5555;
+    color: white;
+    cursor: pointer;
+    margin-top: 20px;
+}
+.register__button-submit {
+    display: block;
+    margin-top: 10px;
+    color: #0073cc;
+    text-decoration: none;
+}
