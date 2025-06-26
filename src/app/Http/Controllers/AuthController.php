@@ -18,6 +18,13 @@ class AuthController extends Controller
 
     public function register()
     {
+        dd('test');
         return view('auth.register');
+    }
+
+    public function profile()
+    {
+        dd('test');
+        return view('auth.profile');
     }
 }

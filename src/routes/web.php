@@ -20,8 +20,11 @@ Route::middleware('auth')->group(function(){
 });
 
 //ログイン画面
-Route::get('/login', [AuthController::class, 'login']);
+Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
 
 
 //会員登録画面
-Route::get('/register', [AuthController::class, 'register']);
+Route::post('/register', [AuthController::class, 'register']);
+
+//プロフィール画面
+Route::post('/profile', [AuthController::class, 'profile']);

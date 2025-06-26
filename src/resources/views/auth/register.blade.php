@@ -9,8 +9,9 @@
     <div class="register-form__heading">
         <h2>会員登録</h2>
     </div>
-    <form class="form" action="/" method="post">
+    <form class="form" action="/profile" method="post">
         @csrf
+        @method('post')
         <div class="form__group">
             <div class="form__group-title">
                 <span class="form__label--item">お名前</span>
