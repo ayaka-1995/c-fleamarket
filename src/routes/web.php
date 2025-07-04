@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,17 +14,19 @@ use App\Http\Controllers\AuthController;
 |
 */
 
+//①ログイン画面
+Route::post('/login', [UserController::class, 'loginUser']);
+
+//①’会員登録画面
+Route::post('/register', [UserController::class, 'storeUser']);
+
+//②’プロフィール画面
+Route::get('/mypage/profile', [UserController::class, 'showProfileForm']);
+Route::post('/mypage/profile', [UserController::class, 'profile']);
+
+Route::get('/', [UserController::class, 'index']);
 //ログイン後の商品一覧画面index.blade.php、ミドルウェア
-Route::middleware('auth')->group(function(){
-    Route::get('/', [AuthController::class, 'index']);
-});
+//Route::middleware('auth')->group(function(){
+    //Route::get('/', [UserController::class, 'index']);
+//});
 
-//ログイン画面
-Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
-
-
-//会員登録画面
-Route::post('/register', [AuthController::class, 'register']);
-
-//プロフィール画面
-Route::post('/profile', [AuthController::class, 'profile']);

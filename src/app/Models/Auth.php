@@ -9,5 +9,4 @@ class Auth extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['']
 }
