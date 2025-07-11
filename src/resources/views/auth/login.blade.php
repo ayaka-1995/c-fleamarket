@@ -10,7 +10,7 @@
         <h2>ログイン</h2>
     </div>
 
-    <form class="form" action="/" method="post">
+    <form class="form" action="/login" method="post">
         @csrf
 
     <div class="form__group">

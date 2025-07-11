@@ -1,12 +1,19 @@
 .profile-container {
-    display: flex;
     max-width: 600px;
-    margin: 40px auto 20px;
+    margin: auto;
     padding: 40px;
     background-color: #fff;
     border-radius: 12px;
     font-family: "Inter", sans-serif;
     color: #000;
+}
+
+.profile-image_wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 32px;
 }
 
 .profile-title {
@@ -33,7 +40,7 @@
     text-decoration: none;
 }
 
-.image_btn {
+.label_name {
     padding: 10px 16px;
     background-color: #ffffff;
     border: 2px solid #ff5555;
@@ -44,54 +51,67 @@
     white-space: nowrap;
 }
 
-.form_group {
+.select-image__button {
+    width: 179px;
+    height: 49px;
+}
+
+.form__group-contents {
     display: flex;
-    text-align: center;
+    flex-direction: column;
+    align-items: center;
     margin-bottom: 16px;
 }
 
-.form_group-label {
+.form__label-item {
     display: block;
-    margin-bottom: 6px;
-    font-weight: 500;
+    text-align: left;
+    width: 100%;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    max-width: 600px;
 }
 
-.profile-container input[type="text"],
-.profile-container input[type="file"] {
+.form__group-content {
+    margin-top: 10px;
+    text-align: center;
+}
+.form__input-text {
     width: 100%;
-    padding: 10px 12px;
+    padding: 10px;
+    border: none;
     border: 1px solid #ccc;
     border-radius: 6px;
-    box-sizing: border-box;
+    background-color: #ffffff;
     margin-bottom: 16px;
+    cursor: pointer;
+}
+
+.form__input-text input {
+    width: 680px;
+    height: 55px;
+    border: none;
+    outline: none;
+}
+
+.form__error {
+    color: #ff5555;
     font-size: 14px;
+    padding: 10px 0;
 }
 
-.alert-success {
-    background-color: #d1e7dd;
-    color: #0f5132;
-    border: 1px solid;
-    padding: 12px 20px;
-    border-radius: 6px;
-    margin-bottom: 20px;
-}
-
-.profile-placeholder {
-    width: 120px;
-    height: 120px;
-    background-color: #d9d9d9;
-    border-radius: 50%;
-    display: inline-block;
-}
-.profile-container .btn {
+.btn-primary {
     display: block;
-    width: 100%;
-    padding: 12px;
+    width: 680px;
+    height: 55px;
+    margin: 30px auto;
+    padding: 12px 20px;
     font-weight: bold;
     font-size: 16px;
-    border-radius: 6px;
-    background-color: #ff5555;
+    border-radius: 10px;
     border: none;
-    color: #ffffff;
-    margin-top: 20px;
+    background-color: #ff5555;
+    color: #fff;
+    text-align: center;
 }

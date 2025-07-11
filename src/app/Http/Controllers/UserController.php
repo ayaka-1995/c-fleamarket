@@ -37,6 +37,7 @@ class UserController extends Controller
             'name' => $request->name,
             'postal_code' => $request->postal_code,
             'address' => $request->address,
+            'building' => $request->building,
         ]);
 
         return redirect('/');
@@ -49,10 +50,17 @@ class UserController extends Controller
         if (Auth::attempt($credentials)) {
             return redirect('/');
         }
+        return back()->withErrors([
+            'email' => 'メールアドレスかパスワードが正しくありません。',
+        ]);
     }
 
     public function index()
     {
         return view('index');
+    }
+
+    public function logout(){
+        return view('auth.login');
     }
 }

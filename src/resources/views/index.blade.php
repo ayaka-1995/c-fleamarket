@@ -10,41 +10,7 @@
         <button class="tab-button__mylist">マイリスト</button>
     </div>
 
-    <div class="product__row">
-        <div class="product-item">
-            <div class="product-image">商品画像</div>
-            <div class="product-name">商品名</div>
-        </div>
-    
-        <div class="product-item">
-            <div class="product-image">商品画像</div>
-            <div class="product-name">商品名</div>
-        </div>
-    
-        <div class="product-item">
-            <div class="product-image">商品画像</div>
-            <div class="product-name">商品名</div>
-        </div>
-    
-        <div class="product-item">
-            <div class="product-image">商品画像</div>
-            <div class="product-name">商品名</div>
-        </div>
-    </div>
-    <div class="product__row">
-        <div class="product-item">
-            <div class="product-image">商品画像</div>
-            <div class="product-name">商品名</div>
-        </div>
-
-        <div class="product-item">
-            <div class="product-image">商品画像</div>
-            <div class="product-name">商品名</div>
-        </div>
-
-        <div class="product-item">
-            <div class="product-image">商品画像</div>
-            <div class="product-name">商品名</div>
-        </div>
-    </div>
+    <div class="product__contents">
+        @foreach ($products as $product)
+        <div class="product-contents"></div>
 @endsection

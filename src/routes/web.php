@@ -24,9 +24,9 @@ Route::post('/register', [UserController::class, 'storeUser']);
 Route::get('/mypage/profile', [UserController::class, 'showProfileForm']);
 Route::post('/mypage/profile', [UserController::class, 'profile']);
 
-Route::get('/', [UserController::class, 'index']);
+//Route::get('/', [UserController::class, 'index']);
 //ログイン後の商品一覧画面index.blade.php、ミドルウェア
-//Route::middleware('auth')->group(function(){
-    //Route::get('/', [UserController::class, 'index']);
-//});
+Route::middleware('auth')->group(function(){
+    Route::get('/', [UserController::class, 'index']);
+});
 
