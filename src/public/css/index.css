@@ -1,0 +1,52 @@
+.toppage-list {
+    display: flex;
+    gap: 50px;
+    border-bottom: 1px solid #ccc;
+    margin: 30px 0;
+}
+
+.tab-button__recommend,
+.tab-button__mylist {
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.tab-button__recommend {
+    color: #5f5f5f;
+    margin-left: 300px;
+}
+
+.tab-button__mylist {
+    color: #ff0000;
+}
+
+.item-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    justify-content: center;
+}
+
+.item-cards {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item-cards img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.item-cards a {
+    text-decoration: none;
+}
+
+.items-name {
+    color: #000;
+    text-decoration: none;
+}

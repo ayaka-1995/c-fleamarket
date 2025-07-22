@@ -7,8 +7,10 @@ use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\Request;
+use App\Models\Item;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+
 
 
 class UserController extends Controller
@@ -57,7 +59,8 @@ class UserController extends Controller
 
     public function index()
     {
-        return view('index');
+        $items= Item::all();
+        return view('index',compact('items'));
     }
 
     public function logout(){
