@@ -66,4 +66,14 @@ class UserController extends Controller
     public function logout(){
         return view('auth.login');
     }
+
+    public function mypage()
+    {
+        $user = Auth::user();
+
+        //出品した商品
+        $listedItems = \App\Models\Item::where('user_id',$user->id)->get();
+
+        return view('mypage.index',compact('user'));
+    }
 }

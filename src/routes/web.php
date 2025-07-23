@@ -20,14 +20,18 @@ Route::post('/login', [UserController::class, 'loginUser']);
 //①’会員登録画面
 Route::post('/register', [UserController::class, 'storeUser']);
 
-//②’プロフィール画面
+//②’プロフィール編集画面（設定画面）
 Route::get('/mypage/profile', [UserController::class, 'showProfileForm']);
 Route::post('/mypage/profile', [UserController::class, 'profile']);
 
+
+//商品一覧画面
 Route::get('/', [UserController::class, 'index']);
 //ログイン後の商品一覧画面index.blade.php、ミドルウェア
 //Route::middleware('auth')->group(function(){
     //Route::get('/', [UserController::class, 'index']);
 //});
 
+//プロフィール画面
+Route::get('/mypage',[UserController::class,]);
 
