@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Comment;
 
 class Item extends Model
 {
@@ -18,4 +19,9 @@ class Item extends Model
         'category_id',
         'user_id',
     ];
+
+    public function comments()
+    {
+        return $this->hasMany(ProductComment::class, 'item_id');
+    }
 }

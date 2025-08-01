@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,9 +30,10 @@ Route::post('/mypage/profile', [UserController::class, 'profile']);
 Route::get('/', [UserController::class, 'index']);
 //ログイン後の商品一覧画面index.blade.php、ミドルウェア
 //Route::middleware('auth')->group(function(){
-    //Route::get('/', [UserController::class, 'index']);
+    Route::get('/', [UserController::class, 'index']);
 //});
+
+Route::get('/item/{id}',[ItemController::class, 'item']);
 
 //プロフィール画面
 Route::get('/mypage',[UserController::class,]);
-
