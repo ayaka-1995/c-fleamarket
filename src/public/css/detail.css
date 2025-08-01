@@ -27,6 +27,20 @@
     height: auto;
     border-radius: 8px;
 }
+
+.item-info {
+    margin-bottom: 30px;
+}
+
+.item-name {
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+.item-price {
+    font-size: 30px;
+}
+
 .favorite-button {
     background-color: transparent;
     border: none;
@@ -38,39 +52,30 @@
 
 .fukidashi {
     position: relative;
-    display: grid;
-    place-items: center;
-    width: 30px;
-    height: 30px;
-    border: 2px solid #333;
+    padding: 20px;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
     border-radius: 50%;
-    margin: 10px;
+    text-align: center;
+    color: #ffffff;
+    letter-spacing: 0.2em;
+    font-size: 7px;
+    background-color: #ff9800;
 }
 .fukidashi::before {
     content: "";
     position: absolute;
-    bottom: -5px;
-    left: 58%;
-    width: 15px;
-    height: 15px;
-    transform: rotate(135deg);
-    box-sizing: border-box;
-    background-color: #fff;
+    display: block;
+    width: 0;
+    height: 0;
+    left: 2px;
+    bottom: 2px;
+    border-right: 20px solid #ff9800;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    transform: rotate(-45deg);
 }
-
-.fukidashi::after {
-    content: "";
-    position: absolute;
-    top: calc(100% + 5px);
-    left: 70%;
-    width: 20px;
-    height: 2px;
-    transform: rotate(50deg);
-    box-sizing: border-box;
-    background-color: #333;
-    box-sizing: 0 2px 0 #fff, 0 -2px 0 #fff;
-}
-
 .profile-image {
     width: 120px;
     height: 120px;
