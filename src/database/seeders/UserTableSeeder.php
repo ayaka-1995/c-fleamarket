@@ -19,8 +19,6 @@ class UserTableSeeder extends Seeder
             'name' => 'sample',
             'email' => 'sample@example.com',
             'password' =>Hash::make('sample12'),
-            'postal_code' => 370-3521,
-            'address' => '群馬県高崎市棟高町'
         ];
         DB::table('users')->insert($user);
     }
