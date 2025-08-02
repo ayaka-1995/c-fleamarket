@@ -1,9 +1,8 @@
 # c-fleamarket
 環境構築
 Dockerビルド
-
-`git clone git@github.com:git@github.com:ayaka-1995/c-fleamarket
-cd coachtech-Checktest-mogitate
+git clone git@github.com:ayaka-1995/c-fleamarket
+cd c-fleamarket
 DockerDesktopアプリを立ち上げる
 docker-compose up -d --build
 MacのM1・M2チップのPCの場合、no matching manifest for linux/arm64/v8 in the manifest list entriesのメッセージが表示されビルドができないことがあります。 エラーが発生する場合は、docker-compose.ymlファイルの「mysql」内に「platform」の項目を追加で記載してください
