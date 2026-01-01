@@ -1,47 +1,171 @@
-.header {
-    background: #000;
+* {
+    /*全体リセット・共通リセット*/
+    box-sizing: border-box;
 }
 
-.header__inner {
-    margin: 0 auto;
-    padding: 20px 15px;
-    max-width: 1230px;
+body {
+    width: 100vw;
 }
 
-.header__utilities {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+img {
+    width: 100%;
 }
 
-.header__logo img {
-    height: 40px;
-}
-
-.search-bar {
-    width: 500px;
-    height: 50px;
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-}
-
-.header-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.header-nav__link {
-    color: #fff;
-    text-decoration: none;
-}
-
-.header-nav__button {
+button {
+    /*ボタンを一度まっさらな状態にして、cssで自由にデザインできるようにする*/
+    background-color: transparent; /* 背景色を透明にする（ブラウザ基準のグレー背景などを消す）*/
     border: none;
-    background: transparent;
+    cursor: pointer;
+    outline: none; /*フォーカス時（クリック・Tab移動）の青い枠線を消す*/
+    padding: 0;
+    appearance: none; /*OSやブラウザ独自の「ボタンの見た目」を無効化する*/
+}
+
+select {
+    /*デフォルトの見た目を消して、カスタムデザインしやすくする（selectは完全カスタムが難しいので、最低限のリセット）*/
+    border: none; /*セレクトボックスの枠線を消す*/
+    outline: none;
+}
+
+header {
+    align-items: center;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    font-size: 16px;
+    justify-content: space-between;
+    height: 60px;
+    padding: 0 30px;
+    position: sticky; /*スクロールしても画面上部に張り付くようにする*/
+    z-index: var(
+        --mer-z-index-navigation-top
+    ); /*他の要素より全面に表示されるよう、重なり順を指定*/
+    top: 0px; /*画面の一番上（0px）に固定*/
+}
+
+.header__logo {
+    width: 250px;
+    height: fit-content;
+    vertical-align: middle;
+}
+
+.header_search {
+    display: flex;
+    height: 100%;
+    padding: 10px 0;
+}
+
+.header_search--input {
+    border: none;
+    padding: 0 20px;
+    width: 25vw;
+}
+
+.header_search--button {
+}
+
+.header__nav {
+    display: flex;
+}
+
+.header__nav ul {
+    display: flex;
+    align-items: center;
+}
+
+.header__nav li {
+    margin-right: 30px;
+}
+
+.header__nav li:hover {
+    font-weight: bold;
+}
+
+.header__logout {
     color: #fff;
     font-size: 16px;
-    cursor: pointer;
+}
+
+.header__logout:hover {
+    font-weight: bold;
+}
+
+.header__btn {
+    background-color: #fff;
+    border-radius: 4px;
+    color: #000;
+    font-weight: bold;
+    padding: 10px 15px;
+}
+
+.header__btn:hover {
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
+.container {
+    /*各ページの中身を含む外枠(index,mypage,sellなど)*/
+    padding: 5%;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    background-color: #ff333f;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    justify-content: center;
+    width: 450px;
+    height: 45px;
+}
+
+.btn:hover {
+    opacity: 0.8;
+    transition: 0.2s;
+}
+
+.btn--big {
+    width: 100%;
+    margin-top: 60px;
+    font-size: 20px;
+}
+
+.btn2 {
+}
+
+.btn2:hover {
+}
+
+.btn2--input {
+}
+
+.center {
+    width: 680px;
+    margin: 0 auto;
+    padding: 50px 0;
+}
+
+.page__title {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.entry__name {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 30px 0 10px 0;
+}
+
+.input {
+    width: 100%;
+    height: 45px;
+    padding: 5px;
+}
+
+.form__error {
+    color: #ff333f;
+    margin-top: 8px;
 }

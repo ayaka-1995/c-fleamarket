@@ -1,56 +1,35 @@
-@extends('layouts.app')
+@extends('layouts.default')
 
+<!-- タイトル -->
+@section('title', 'ログイン')
+
+<!-- css読み込み -->
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/login.css') }}">
+<link rel="stylesheet" href="{{ asset('css/authentication.css') }}">
 @endsection
 
+<!-- 本体 -->
 @section('content')
-<div class="login-form__content">
-    <div class="login-form__heading">
-        <h2>ログイン</h2>
-    </div>
 
-    <form class="form" action="/login" method="post">
+@include('components.header')
+<form action="/login" method="post" class="authenticate center">
         @csrf
-
-    <div class="form__group">
-        <div class="form__group-title">
-            <span class="form__label-item">メールアドレス</span>
+        <h1 class="page__title">ログイン</h1>
+        <label for="mail" class="entry__name">メールアドレス</label>
+        <input name="email" id="email" type="email" class="input" value="{{ old('email') }}">
+        <div class="form__error">
+            @error('email')
+            {{ $message}}
+            @enderror
         </div>
-        <div class="form__group-content">
-            <div class="form__group--text">
-                <input type="email" name="email" value="{{ old('email') }}" />
-            </div>
-            <div class="form__error">
-                @error('email')
-                {{ $message }}
-                @enderror
-            </div>
+        <label for="password" class="entry__name">パスワード</label>
+        <input name="password" id="password" type="password" class="input">
+        <div class="form__error">
+            @error('password')
+            {{ $message }}
+            @enderror
         </div>
-    </div>
-
-    <div class="form__group">
-        <div class="form-title">
-            <span class="form__label-item">パスワード</span>
-        </div>
-        <div class="form__group-content">
-            <div class="form__group--text">
-                <input type="password" name="password" />
-            </div>
-            <div class="form__error">
-                @error('password')
-                {{ $message }}
-                @enderror
-            </div>
-        </div>
-    </div>
-
-    <div class="form__button">
-        <button class="form__button-submit" type="submit">ログインする</button>
-    </div>
-    </form>
-    <div class="register__link">
-        <a class="register__button-submit" href="/register">会員登録はこちら</a>
-    </div>
-</div>
+        <button class="btn btn--big">ログインする</button>
+        <a href="/register" class="link">会員登録はこちら</a>
+</form>
 @endsection

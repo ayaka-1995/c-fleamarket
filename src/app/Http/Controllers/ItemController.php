@@ -15,7 +15,7 @@ class ItemController extends Controller
 {
     public function index(Request $request){
         $tab = $request->query('tab', 'recommend');//URLに$tabがあればそれを使う。なければおすすめを表示する
-        $search = $request->query('search');//検索欄に入力された文字を受け取る
+        $search = $request->query('search', '');//検索欄に入力された文字を受け取る
         $query = Item::query();//商品を探す準備をする
         $query->where('user_id', '<>', Auth::id());//noteへ
 
@@ -41,9 +41,9 @@ class ItemController extends Controller
     }
 
     public function search(Request $request){//検索フォームから送られてきた情報を受け取る処理
-        $search_word = $request->search_item;//フォームで入力された検索ワードを取り出す、<input name = "search_item">と対応
+        $search = $request->search_item;//フォームで入力された検索ワードを取り出す、<input name = "search_item">と対応
         $query = Item::query();//商品テーブルに対する検索準備をする
-        $query = Item::scopeItem($query, $search_word);//検索のキーワードを使って、商品検索用の条件をまとめた処理を適用する、Itemモデルの経由
+        $query = Item::scopeItem($query, $search);//検索のキーワードを使って、商品検索用の条件をまとめた処理を適用する、Itemモデルの経由
 
         $items = $query->get();//設定した検索条件で商品一覧を取得する
         return view('index', compact('items'));//商品一覧画面(index)を表示し、検索結果の商品一覧を渡す
