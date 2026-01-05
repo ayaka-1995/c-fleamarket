@@ -5,7 +5,7 @@ use App\Http\Controllers\ItemController;
 //use App\Http\Controllers\LikeController;
 //use App\Http\Controllers\CommentController;
 //use App\Http\Controllers\PurchaseController;
-//use App\Http\Controllers\RegisteredUserController;
+use App\Http\Controllers\RegisteredUserController;
 //use App\Http\Requests\EmailVerificationRequest;
 //use Illuminate\Http\Request;
 //use Illuminate\Support\Facades\Route;
@@ -27,9 +27,9 @@ Route::get('/',[ItemController::class, 'index'])->name('items.list');//商品一
 Route::get('/item/{item}', [ItemController::class, 'detail'])->name('item.detail');//商品詳細画面
 Route::get('/item',[ItemController::class, 'search']);//検索画面
 
-//Route::middleware(['auth','verified'])->group(function(){
-    //Route::get('/sell',[ItemController::class, 'sellView']);//商品出品画面表示
-    //Route::post('/sell', [ItemController::class, 'sellCreate']);//商品出品画面登録
+Route::middleware(['auth','verified'])->group(function(){
+    Route::get('/sell',[ItemController::class, 'sellView']);//商品出品画面表示
+    Route::post('/sell', [ItemController::class, 'sellCreate']);//商品出品画面登録
     //Route::post('/item/like/{item_id}', [LikeController::class, 'create']);
     //Route::post('/item/unlike/{item_id}', [LikeController::class, 'destroy']);
     //Route::post('/item/comment/{item_id}', [CommentController::class, 'create']);//コメント登録
@@ -41,12 +41,12 @@ Route::get('/item',[ItemController::class, 'search']);//検索画面
     //Route::get('/mypage', [UserController::class, 'mypage']);//プロフィール画面
     //Route::get('/mypage/profile', [UserController::class, 'profile']);//プロフィール編集画面表示
     //Route::post('/mypage/profile', [UserController::class, 'updateProfile']);//プロフィール編集画面登録
-//});
+});
 
 Route::get('/login',function(){
     return view('auth.login');
 })->name('login');
-Route::post('/login', [AuthenticatedSessionController::class, 'store'])->middleware('email');//ログイン画面
+Route::post('/login', [AuthenticatedSessionController::class, 'store'])->middleware('guest');//ログイン画面
 
 Route::get('/register',function(){
     return view('auth.register');

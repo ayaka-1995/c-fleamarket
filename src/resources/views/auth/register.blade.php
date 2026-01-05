@@ -1,81 +1,44 @@
-@extends('layouts.app')
+@extends('layouts.default')
 
+<!-- タイトル -->
+@section('title', '会員登録')
+
+<!-- css読み込み-->
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/register.css') }}">
+<link rel="stylesheet" href="{{ asset('css/authentication.css') }}">
 @endsection
 
+<!--本体-->
 @section('content')
-<div class="register-form__content">
-    <div class="register-form__heading">
-        <h2>会員登録</h2>
-    </div>
-    <form class="form" action="/register" method="post">
+
+@include('components.header')
+    <form action="/register" method="post" class="authentication center">
         @csrf
-        
-        <div class="form__group">
-            <div class="form__group-title">
-                <span class="form__label--item">お名前</span>
-            </div>
-            <div class="form__group-content">
-                <div class="form__input--text">
-                    <input type="text" name="name" value="{{ old('name') }}" />
-                </div>
-                <div class="form__error">
-                    @error('name')
-                    {{ $message }}
-                    @enderror
-                </div>
-            </div>
+        <h1 class="page__title">会員登録</h1>
+        <label for="name" class="entry__name">ユーザー名</label>
+        <input name="name" id="name" type="text" class="input" value="{{ old('name') }}">
+        <div class="form__error">
+            @error('name')
+            {{ $message }}
+            @enderror
         </div>
-
-        <div class="form__group">
-            <div class="form__group-title">
-                <span class="form__label--item">メールアドレス</span>
-            </div>
-            <div class="form__group-content">
-                <div class="form__input--text">
-                    <input type="email" name="email" value="{{ old('email') }}">
-                </div>
-                <div class="form__error">
-                    @error('email')
-                    {{ $message }}
-                    @enderror
-                </div>
-            </div>
+        <label for="mail" class="entry__name">メールアドレス</label>
+        <input  name="email" type="mail" class="input" value="{{ old('email') }}">
+        <div class="form__error">
+            @error('email')
+            {{ $message }}
+            @enderror
         </div>
-
-        <div class="form__group">
-            <div class="form__group-title">
-                <span class="form__label--item">パスワード</span>
+        <label for="password" class="entry__name">パスワード</label>
+            <input  name="password" id="password" type="password" class="input">
+            <div class="form__error">
+                @error('password')
+                {{ $message }}
+                @enderror
             </div>
-            <div class="form__group-content">
-                <div class="form__input--text">
-                    <input type="password" name="password" />
-                </div>
-                <div class="form__error">
-                    @error('password')
-                    {{ $message }}
-                    @enderror
-                </div>
-            </div>
-        </div>
-
-        <div class="form__group">
-            <div class="form__group-title">
-                <span class="form__label--item">確認用パスワード</span>
-            </div>
-            <div class="form__group-content">
-                <div class="form__input--text">
-                    <input type="password" name="password_confirmation" />
-                </div>
-            </div>
-        </div>
-        <div class="form__button">
-            <button class="form__button-submit" type="submit">登録する</button>
-        </div>
+        <label for="password_confirm" class="entry__name">確認用パスワード</label>
+        <input name="password_confirmation" id="password" type="password" class="input">
+        <button class="btn btn--big">登録する</button>
+        <a href="/login" class="link">ログインはこちら</a>
     </form>
-    <div class="login-link">
-        <a class="login__button-submit" href="/login">ログインはこちら</a>
-    </div>
-</div>
 @endsection

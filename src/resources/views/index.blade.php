@@ -24,7 +24,7 @@
 
     <div class="container">
         <div class="items">
-            {{--$itemsに入っている商品データを１件ずつ$itemとして取り出す--}}
+            {{--$itemsに入っている商品データを1件ずつ$itemとして取り出す--}}
             @foreach ($items as $item)
             <div class="item">
                 {{--商品詳細ページへのリンク、/item/商品IDに遷移する--}}
