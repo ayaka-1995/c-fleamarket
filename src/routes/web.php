@@ -47,7 +47,11 @@ Route::get('/login',function(){
     return view('auth.login');
 })->name('login');
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])->middleware('email');//ログイン画面
-//Route::post('/register', [RegisteredUserController::class, 'store']);//会員登録
+
+Route::get('/register',function(){
+    return view('auth.register');
+})->middleware('guest')->name('register');
+Route::post('/register', [RegisteredUserController::class, 'store']);//会員登録
 
 //Route::get('/email/verify', function(){
     //return view('auth.verify-email');

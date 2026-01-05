@@ -120,9 +120,9 @@ header {
     height: 45px;
 }
 
-.btn:hover {
-    opacity: 0.8;
-    transition: 0.2s;
+.btn:hover { /*btnクラスがついた要素に、マウスをのせた時*/
+    opacity: 0.8;/*要素を少し透過させる*/
+    transition: 0.2s;/*変化を0.2秒かけて滑らかに行う*/
 }
 
 .btn--big {
@@ -153,10 +153,10 @@ header {
 }
 
 .entry__name {
-    display: block;
+    display: block;/*ブロック要素として表示する（横幅いっぱいを使い、前後で改行される）*/
     font-size: 18px;
     font-weight: bold;
-    margin: 30px 0 10px 0;
+    margin: 30px 0 10px 0;/*外側の余白を 上30px、右0、下10px、左0に設定する*/
 }
 
 .input {
