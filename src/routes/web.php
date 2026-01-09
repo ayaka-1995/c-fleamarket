@@ -45,7 +45,7 @@ Route::middleware(['auth','verified'])->group(function(){
 
 Route::get('/login',function(){
     return view('auth.login');
-})->name('login');
+})->name('auth.login');
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])->middleware('guest');//ログイン画面
 
 Route::get('/register',function(){

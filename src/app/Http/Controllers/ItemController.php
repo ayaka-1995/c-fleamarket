@@ -51,7 +51,7 @@ class ItemController extends Controller
 
     public function sellView(){
         $categories = Category::all();//カテゴリテーブルから、全てのカテゴリデータを取得
-        $conditions = Conditions::all();//商品の状態テーブルから、すべての状態データを取得
+        $conditions = Condition::all();//商品の状態テーブルから、すべての状態データを取得
         return view('sell', compact('categories', 'conditions'));//sell.blade.phpという出品画面に、$categories $conditionsのデータを渡して表示
     }
 
