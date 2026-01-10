@@ -62,6 +62,7 @@ header {
 }
 
 .header_search--button {
+    display: none;
 }
 
 .header__nav {
