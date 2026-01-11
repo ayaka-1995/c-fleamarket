@@ -1,6 +1,6 @@
 <?php
 
-//use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ItemController;
 //use App\Http\Controllers\LikeController;
 //use App\Http\Controllers\CommentController;
@@ -38,9 +38,9 @@ Route::middleware(['auth','verified'])->group(function(){
     //Route::get('/purchase/{item_id}/success', [PurchaseController::class, 'success']);
     //Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'address']);//送付先住所変更画面表示
     //Route::post('/purchase/address/{item_id}', [PurchaseController::class, 'updateAddress']);//送付先住所変更画面登録
-    //Route::get('/mypage', [UserController::class, 'mypage']);//プロフィール画面
-    //Route::get('/mypage/profile', [UserController::class, 'profile']);//プロフィール編集画面表示
-    //Route::post('/mypage/profile', [UserController::class, 'updateProfile']);//プロフィール編集画面登録
+    Route::get('/mypage', [UserController::class, 'mypage']);//プロフィール画面
+    Route::get('/mypage/profile', [UserController::class, 'profile']);//プロフィール編集画面表示
+    Route::post('/mypage/profile', [UserController::class, 'updateProfile']);//プロフィール編集画面登録
 });
 
 Route::get('/login',function(){
