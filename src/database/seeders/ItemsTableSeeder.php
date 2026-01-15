@@ -62,7 +62,7 @@ class ItemsTableSeeder extends Seeder
             'description' => '高性能なノートパソコンノートパソコン',
             'image_url' => 'storage/images/ノートPC.jpg',
             'user_id'=> 2,
-            'condition' => Condition::$UNUSED,
+            'condition_id' => Condition::$UNUSED,
         ],
         [
             'name' => 'マイク',
@@ -71,7 +71,7 @@ class ItemsTableSeeder extends Seeder
             'description' => '高音質のレコーディング用マイク',
             'image_url' => 'storage/images/マイク.jpg',
             'user_id' => 2,
-            'condition' => Condition::$HARMLESS,
+            'condition_id' => Condition::$HARMLESS,
         ],
         [
             'name' => 'ショルダーバック',
@@ -80,17 +80,16 @@ class ItemsTableSeeder extends Seeder
             'description' => 'おしゃれなショルダーバック',
             'image_url' => 'storage/images/ショルダーバッグ.jpg',
             'user_id'=> 1,
-            'condition' => Condition::$HARMED,
+            'condition_id' => Condition::$HARMED,
         ],
         [
             'name' => 'タンブラー',
             'price' => 500,
             'brand' => '',
             'description' => '使いやすいタンブラー',
-            'condition' => '状態が悪い',
             'image_url' => 'storage/images/タンブラー.jpg',
             'user_id' => 1,
-            'condition' => Condition::$BAD_CONDITION,
+            'condition_id' => Condition::$BAD_CONDITION,
         ],
         [
             'name' => 'コーヒーミル',

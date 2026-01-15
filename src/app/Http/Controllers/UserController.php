@@ -62,7 +62,7 @@ class UserController extends Controller
                 return $sold_item->item;
             });
         }else{
-            $items = Item::where('user_id', $user_id)->get();
+            $items = Item::where('user_id', $user->id)->get();
         }
         return view('mypage', compact('user','items'));
     }
