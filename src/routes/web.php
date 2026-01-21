@@ -2,9 +2,9 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ItemController;
-//use App\Http\Controllers\LikeController;
-//use App\Http\Controllers\CommentController;
-//use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\LikeController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\RegisteredUserController;
 //use App\Http\Requests\EmailVerificationRequest;
 //use Illuminate\Http\Request;
@@ -33,9 +33,9 @@ Route::middleware(['auth','verified'])->group(function(){
     Route::post('/item/like/{item_id}', [LikeController::class, 'create']);
     Route::post('/item/unlike/{item_id}', [LikeController::class, 'destroy']);
     Route::post('/item/comment/{item_id}', [CommentController::class, 'create']);//コメント登録
-    //Route::get('/purchase/{item_id}', [PurchaseController::class, 'index'])->middleware('purchase')->name('purchase.index');//商品購入画面
-    //Route::post('/purchase/{item_id}', [PurchaseController::class, 'purchase'])->middleware('purchase');//商品購入画面登録
-    //Route::get('/purchase/{item_id}/success', [PurchaseController::class, 'success']);
+    Route::get('/purchase/{item_id}', [PurchaseController::class, 'index'])->middleware('purchase')->name('purchase.index');//商品購入画面
+    Route::post('/purchase/{item_id}', [PurchaseController::class, 'purchase'])->middleware('purchase');//商品購入画面登録
+    Route::get('/purchase/{item_id}/success', [PurchaseController::class, 'success']);
     //Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'address']);//送付先住所変更画面表示
     //Route::post('/purchase/address/{item_id}', [PurchaseController::class, 'updateAddress']);//送付先住所変更画面登録
     Route::get('/mypage', [UserController::class, 'mypage']);//プロフィール画面
