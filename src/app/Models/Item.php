@@ -22,12 +22,12 @@ class Item extends Model
 
     public function user()
     {
-        return $this->belongTo('App\Models\User');
+        return $this->belongsTo('App\Models\User');
     }
 
     public function condition()
     {
-        return $this->belongTo('App\Models\Condition');
+        return $this->belongsTo('App\Models\Condition');
     }
 
     public function likes()
