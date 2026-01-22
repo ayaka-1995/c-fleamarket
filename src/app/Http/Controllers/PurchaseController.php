@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\AddressRequest;
 use App\Models\Item;
 use App\Models\User;
-use App\Models\SoldItem;
+//use App\Models\SoldItem;
 use App\Models\Profile;
 //use Stripe\StripeClient;
 
