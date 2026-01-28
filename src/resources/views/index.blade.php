@@ -32,11 +32,11 @@
                     {{-- 売却済みかどうかで表示を分岐 --}}
                     @if($item->sold())
                     <div class="item__img--container sold">{{--売却済み商品の画像用コンテナ--}}
-                        <img src="{{ \Storage::url($item->img_url) }}" class="item__img" alt="商品画像">
+                        <img src="{{ asset($item->img_url) }}" class="item__img" alt="商品画像">
                     </div>
                     @else
                     <div class="item__img--container">{{--通常商品の画像用コンテナ--}}
-                        <img src="{{ \Storage::url($item->img_url) }}" class="item__img" alt="商品画像">
+                        <img src="{{ asset($item->img_url) }}" class="item__img" alt="商品画像">
                     </div>
                     @endif
                     {{--商品名を表示--}}

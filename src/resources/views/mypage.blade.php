@@ -6,7 +6,7 @@
 <!--css読み込み-->
 @section('css')
 <link rel="stylesheet" href="{{ asset('/css/index.css') }}">
-<link rel="stylesheet" href="{{ asset('/css/mypage') }}">
+<link rel="stylesheet" href="{{ asset('/css/mypage.css') }}">
 @endsection
 
 <!--本体-->
@@ -18,9 +18,9 @@
         <div class="user__info">
             <div class="user__img">
                 @if(isset($user->profile->img_url))
-                <img class="user__icon" src="{{ \Storage::url($user->profile->img_url) }}" alt="">
+                    <img class="user__icon" src="{{ \Storage::url($user->profile->img_url) }}" alt="">
                 @else
-                <img id="myImage" class="user_icon" src="{{ asset('img/icon.png')}}" alt="">
+                    <img id="myImage" class="user__icon" src="{{ asset('img/icon.png')}}" alt="">
                 @endif
             </div>
             <p class="user__name">{{ $user->name }}</p>

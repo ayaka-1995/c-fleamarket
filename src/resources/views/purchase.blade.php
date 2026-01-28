@@ -48,7 +48,7 @@
                         @endif
                     </div>
                     <div class="setting__flex">
-                        <button type="button" id="destination_setting">変更完了</button>
+                        <button type="button" id="destination__setting">変更完了</button>
                     </div>
                 </div>
             </div>
