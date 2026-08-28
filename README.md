@@ -1,33 +1,155 @@
-# c-fleamarket
-環境構築
-Dockerビルド
-git clone git@github.com:ayaka-1995/c-fleamarket
-cd c-fleamarket
-DockerDesktopアプリを立ち上げる
-docker-compose up -d --build
-MacのM1・M2チップのPCの場合、no matching manifest for linux/arm64/v8 in the manifest list entriesのメッセージが表示されビルドができないことがあります。 エラーが発生する場合は、docker-compose.ymlファイルの「mysql」内に「platform」の項目を追加で記載してください
+# 環境構築
 
-mysql:
-    platform: linux/x86_64(この文追加)
-    image: mysql:8.0.26
-    environment:
-Laravel環境構築
+1. Dockerを起動する
+
+2. プロジェクト直下で、以下のコマンドを実行する
+
+```
+make init
+```
+
+※Makefileは実行するコマンドを省略することができる便利な設定ファイルです。コマンドの入力を効率的に行えるようになります。<br>
+
+## メール認証
+mailtrapというツールを使用しています。<br>
+以下のリンクから会員登録をしてください。　<br>
+https://mailtrap.io/
+
+メールボックスのIntegrationsから 「laravel 7.x and 8.x」を選択し、　<br>
+.envファイルのMAIL_MAILERからMAIL_ENCRYPTIONまでの項目をコピー＆ペーストしてください。　<br>
+MAIL_FROM_ADDRESSは任意のメールアドレスを入力してください。　
+
+## Stripeについて
+コンビニ支払いとカード支払いのオプションがありますが、決済画面にてコンビニ支払いを選択しますと、レシートを印刷する画面に遷移します。そのため、カード支払いを成功させた場合に意図する画面遷移が行える想定です。<br>
+
+また、StripeのAPIキーは以下のように設定をお願いいたします。
+```
+STRIPE_PUBLIC_KEY="パブリックキー"
+STRIPE_SECRET_KEY="シークレットキー"
+```
+
+以下のリンクは公式ドキュメントです。<br>
+https://docs.stripe.com/payments/checkout?locale=ja-JP
+## テーブル仕様
+### usersテーブル
+| カラム名 | 型 | primary key | unique key | not null | foreign key |
+| --- | --- | --- | --- | --- | --- |
+| id | bigint | ◯ |  | ◯ |  |
+| name | varchar(255) |  |  | ◯ |  |
+| email | varchar(255) |  | ◯ | ◯ |  |
+| email_verified_at | timestamp |  |  |  |  |
+| password | varchar(255) |  |  | ◯ |  |
+| remember_token | varchar(100) |  |  |  |  |
+| created_at | timestamp |  |  |  |  |
+| updated_at | timestamp |  |  |  |  |
+
+### profilesテーブル
+| カラム名 | 型 | primary key | unique key | not null | foreign key |
+| --- | --- | --- | --- | --- | --- |
+| id | bigint | ◯ |  | ◯ |  |
+| user_id | bigint |  |  | ◯ | users(id) |
+| img_url | varchar(255) |  |  |  |  |
+| postcode | varchar(255) |  |  | ◯ |  |
+| address | varchar(255) |  |  | ◯ |  |
+| building | varchar(255) |  |  |  |  |
+| created_at | timestamp |  |  |  |  |
+| updated_at | timestamp |  |  |  |  |
+
+### itemsテーブル
+| カラム名 | 型 | primary key | unique key | not null | foreign key |
+| --- | --- | --- | --- | --- | --- |
+| id | bigint | ◯ |  | ◯ |  |
+| user_id | bigint |  |  | ◯ | users(id) |
+| condition_id | bigint |  |  | ◯ | condtions(id) |
+| name | varchar(255) |  |  | ◯ |  |
+| price | int |  |  | ◯ |  |
+| brand | varchar(255) |  |  |  |  |
+| description | varchar(255) |  |  | ◯ |  |
+| img_url | varchar(255) |  |  | ◯ |  |
+| created_at | timestamp |  |  |  |  |
+| updated_at | timestamp |  |  |  |  |
+
+### commentsテーブル
+| カラム名 | 型 | primary key | unique key | not null | foreign key |
+| --- | --- | --- | --- | --- | --- |
+| id | bigint | ◯ |  | ◯ |  |
+| user_id | bigint |  |  | ◯ | users(id) |
+| item_id | bigint |  |  | ◯ | items(id) |
+| comment | varchar(255) |  |  | ◯ |  |
+| created_at | timestamp |  |  |  |  |
+| updated_at | timestamp |  |  |  |  |
+
+### likesテーブル
+| カラム名 | 型 | primary key | unique key | not null | foreign key |
+| --- | --- | --- | --- | --- | --- |
+| user_id | bigint |  | ◯(item_idとの組み合わせ) | ◯ | users(id) |
+| item_id | bigint |  | ◯(user_idとの組み合わせ) | ◯ | items(id) |
+| created_at | timestamp |  |  |  |  |
+| updated_at | timestamp |  |  |  |  |
+
+### sold_itemsテーブル
+| カラム名 | 型 | primary key | unique key | not null | foreign key |
+| --- | --- | --- | --- | --- | --- |
+| user_id | bigint |  |  | ◯ | users(id) |
+| item_id | bigint |  |  | ◯ | items(id) |
+| sending_postcode | varchar(255) |  |  | ◯ |  |
+| sending_address | varchar(255) |  |  | ◯ |  |
+| sending_building | varchar(255) |  |  |  |  |
+| created_at | created_at |  |  |  |  |
+| updated_at | updated_at |  |  |  |  |
+
+### category_itemsテーブル
+| カラム名 | 型 | primary key | unique key | not null | foreign key |
+| --- | --- | --- | --- | --- | --- |
+| item_id | bigint |  | ◯(category_idとの組み合わせ) | ◯ | items(id) |
+| category_id | bigint |  | ◯(item_idとの組み合わせ) | ◯ | categories(id) |
+| created_at | timestamp |  |  |  |  |
+| updated_at | timestamp |  |  |  |  |
+
+### categoriesテーブル
+| カラム名 | 型 | primary key | unique key | not null | foreign key |
+| --- | --- | --- | --- | --- | --- |
+| id | bigint | ◯ |  | ◯ |  |
+| category | varchar(255) |  |  | ◯ |  |
+| created_at | timestamp |  |  |  |  |
+| updated_at | timestamp |  |  |  |  |
+
+### conditionsテーブル
+| カラム名 | 型 | primary key | unique key | not null | foreign key |
+| --- | --- | --- | --- | --- | --- |
+| id | bigint | ◯ |  | ◯ |  |
+| condition | varchar(255) |  |  | ◯ |  |
+| created_at | timestamp |  |  |  |  |
+| updated_at | timestamp |  |  |  |  |
+
+## ER図
+![alt](ER.png)
+
+## テストアカウント
+name: 一般ユーザ  
+email: general1@gmail.com  
+password: password  
+-------------------------
+name: 一般ユーザ  
+email: general2@gmail.com  
+password: password  
+-------------------------
+
+## PHPUnitを利用したテストに関して
+以下のコマンド:  
+```
+//テスト用データベースの作成
+docker-compose exec mysql bash
+mysql -u root -p
+//パスワードはrootと入力
+create database test_database;
 
 docker-compose exec php bash
-composer install
-「.env.example」ファイルを 「.env」ファイルに命名を変更。または、新しく.envファイルを作成
-.envに以下の環境変数を追加
-DB_CONNECTION=mysql
-DB_HOST=mysql
-DB_PORT=3306
-DB_DATABASE=laravel_db
-DB_USERNAME=laravel_user
-DB_PASSWORD=laravel_pass
-アプリケーションキーの作成
-php artisan key:generate
-マイグレーションの実行
-php artisan migrate
-シーディングの実行
-php artisan db:seed
-シンボリックリンク作成
-php artisan storage:link
+php artisan migrate:fresh --env=testing
+./vendor/bin/phpunit
+```
+※.env.testingにもStripeのAPIキーを設定してください。  
+
+## 生徒様へ
+普段よりお世話になっております。  
+こちらの模範解答に関するご質問、またこちらに不備を見つけた、などの際は気兼ねなく申し付けください。
