@@ -123,7 +123,7 @@ https://docs.stripe.com/payments/checkout?locale=ja-JP
 | updated_at | timestamp |  |  |  |  |
 
 ## ER図
-![alt](./img/ER.drawio.png)
+![alt](ER.drawio.png)
 
 ## テストアカウント
 name: 一般ユーザ  
@@ -149,4 +149,3 @@ php artisan migrate:fresh --env=testing
 ./vendor/bin/phpunit
 ```
 ※.env.testingにもStripeのAPIキーを設定してください。  
-
