@@ -123,7 +123,7 @@ https://docs.stripe.com/payments/checkout?locale=ja-JP
 | updated_at | timestamp |  |  |  |  |
 
 ## ER図
-![alt](ER.drawio.png)
+![alt](ER.png)
 
 ## テストアカウント
 name: 一般ユーザ  
